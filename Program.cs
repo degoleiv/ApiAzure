@@ -26,15 +26,47 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-  async Task<List<Partida>> GetPartidas(DataContext context)
-    {
-        var partidasQuery= await context.Partidas.ToListAsync();
-        return partidasQuery;
-    }
 
-app.MapGet("/Partidas", async (DataContext context) => await GetPartidas(context))
-            .WithName("GetPartidas")
-            .WithOpenApi();
+
+
+app.MapGet("/Pruebas", async (DataContext context) =>
+{
+    try
+    {
+        var ultimaPartida = await context.Partidas.FirstOrDefaultAsync();  // Example: Retrieving the first partida, adjust as per your needs
+        if (ultimaPartida != null)
+        {
+            return Results.Ok("Partida encontrada: " + ultimaPartida.Nombre);  // Example response
+        }
+        else
+        {
+            return Results.NotFound("No se encontraron partidas.");  // Example if no partida is found
+        }
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest(ex.ToString());  // Returning BadRequest with exception details
+    }
+}).WithName("GetPruebas")
+.WithOpenApi();  // Adding OpenAPI documentation for the endpoint
+
+
+
+async Task<List<Partida>> GetPartidas(DataContext context)
+{
+    var partidasQuery = await context.Partidas.ToListAsync();
+    return partidasQuery;
+}
+
+app.MapGet("/Partidas", async (DataContext context) =>
+{
+    
+        return await GetPartidas(context);
+    
+})
+.WithName("GetPartidas")
+.WithOpenApi();
+
 
 app.MapPost("/add/jugador", async (DataContext context, JugadorDto jugadorDto) =>
 {
