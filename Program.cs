@@ -86,7 +86,7 @@ app.MapPost("/add/jugador", async (DataContext context, JugadorDto jugadorDto) =
         {
             Nombre = jugadorDto.Nombres[i],
             Indice = i,
-            PartidaNum = ++ultimaPartida,
+            PartidaNum = ultimaPartida,
             Cedula = jugadorDto.Cedula
         };
 

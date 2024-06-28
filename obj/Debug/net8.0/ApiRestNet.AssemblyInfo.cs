@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiRestNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+531b8dc62bc634403ccaafa29df1f6ccb6fc1942")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1b4f6facca0586e9dd5b076b734e7bc3e2f655d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiRestNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiRestNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
